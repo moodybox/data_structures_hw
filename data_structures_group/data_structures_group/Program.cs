@@ -14,7 +14,7 @@ namespace data_structures_group {
             Console.WriteLine("2. Queue");
             Console.WriteLine("3. Dictionary");
             Console.WriteLine("4. Exit");
-            Console.WriteLine("Enter a number 1-4: ");
+            Console.Write("Enter a number 1-4: ");
 
             while (!isInt) {
                 try {
@@ -40,7 +40,7 @@ namespace data_structures_group {
             Console.WriteLine("5. Clear Stack");
             Console.WriteLine("6. Search Stack");
             Console.WriteLine("7. Return to Main Menu");
-            Console.WriteLine("Enter a number 1-7: ");
+            Console.Write("Enter a number 1-7: ");
 
             while (!isInt) {
                 try {
@@ -66,7 +66,7 @@ namespace data_structures_group {
             Console.WriteLine("5. Clear Queue");
             Console.WriteLine("6. Search Queue");
             Console.WriteLine("7. Return to Main Menu");
-            Console.WriteLine("Enter a number 1-7: ");
+            Console.Write("Enter a number 1-7: ");
 
             while (!isInt) {
                 try {
@@ -92,7 +92,7 @@ namespace data_structures_group {
             Console.WriteLine("5. Clear Dictionary");
             Console.WriteLine("6. Search Dictionary");
             Console.WriteLine("7. Return to Main Menu");
-            Console.WriteLine("Enter a number 1-4: ");
+            Console.Write("Enter a number 1-4: ");
 
             while (!isInt) {
                 try {
