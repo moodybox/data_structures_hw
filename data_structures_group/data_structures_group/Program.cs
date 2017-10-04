@@ -261,6 +261,7 @@ namespace data_structures_group {
                     case 4:
                         sStructure = "none";
                         bMenu = false;
+                        bSubMenu = false;
                         break;
                 }
 
