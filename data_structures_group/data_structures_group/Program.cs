@@ -41,12 +41,23 @@ namespace data_structures_group {
                 Random rRand = new Random();
                 myDict.Add(rRand.Next(), userInput);
             }
+
+            Console.WriteLine("'" + userInput + "' has been added to the " + sStructure);
+            Console.WriteLine();
         }
 
         //This function will add a large amount of auto-generated items to the user selected data structure
         public static void add_huge(String sStructure) {
+            int iCount = 0;
+            if (sStructure == "Queue") {
+                iCount = myQueue.Count();
+            } else if (sStructure == "Stack") {
+                iCount = myStack.Count();
+            } else if (sStructure == "Dictionary") {
+                iCount = myDict.Count();
+            }
 
-            for (int i = 0; i < 2000; i++) {
+            for (int i = iCount; i < (iCount + 2000); i++) {
 
                 //This if statement will add a large amount of items to the user-selected data structure
                 if (sStructure == "Queue") {
@@ -57,22 +68,37 @@ namespace data_structures_group {
                     myDict.Add(i, "New Entry " + i);
                 }
             }
+
+            Console.WriteLine("Huge list has been added to the " + sStructure);
+            Console.WriteLine();
         }
 
         //This function will display all the items stored within the user-selected data structure
         public static void display_structure(String sStructure) {
 
             if (sStructure == "Queue") {
-                foreach (String print_job in myQueue) {
-                    Console.WriteLine(print_job);
+                if (myQueue.Count() > 0) {
+                    foreach (String print_job in myQueue) {
+                        Console.WriteLine(print_job);
+                    }
+                } else {
+                    Console.WriteLine("No entries found. The Queue is empty.");
                 }
             } else if (sStructure == "Stack") {
-                foreach (String plate in myStack) {
-                    Console.WriteLine(plate);
+                if (myStack.Count() > 0) {
+                    foreach (String plate in myStack) {
+                        Console.WriteLine(plate);
+                    }
+                } else {
+                    Console.WriteLine("No entries found. The Stack is empty.");
                 }
             } else if (sStructure == "Dictionary") {
-                foreach (KeyValuePair<int, String> entry in myDict) {
-                    Console.WriteLine(entry.Value);
+                if (myDict.Count() > 0) {
+                    foreach (KeyValuePair<int, String> entry in myDict) {
+                        Console.WriteLine(entry.Value);
+                    }
+                } else {
+                    Console.WriteLine("No entries found. The Dictionary is empty.");
                 }
             }
             Console.WriteLine();
@@ -80,6 +106,7 @@ namespace data_structures_group {
 
         //This function will search the user-selected data structure for the user-entered item
         public static void search_structure(String sStructure) {
+            // Declare variables
             String userInput = "";
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
@@ -87,37 +114,38 @@ namespace data_structures_group {
             userInput = Console.ReadLine();
             Console.WriteLine();
 
+            // Start the stopwatch
             sw.Start();
 
             //This if statement goes to the user-selected data structure and then searches the data structure for the user-selected item
             //The user is then notified if the searched for value was found or if it was not be found 
             if (sStructure == "Queue") {
                 if (myQueue.Contains(userInput)) {
-                    Console.WriteLine(userInput + " is found");
+                    Console.WriteLine("'" + userInput + "'" + " is found.");
                     sw.Stop();
                     Console.WriteLine();
                 } else {
-                    Console.WriteLine(userInput + " is not found");
+                    Console.WriteLine("'" + userInput + "'" + " is not found.");
                     sw.Stop();
                     Console.WriteLine();
                 }
             } else if (sStructure == "Stack") {
                 if (myStack.Contains(userInput)) {
-                    Console.WriteLine(userInput + " is found");
+                    Console.WriteLine("'" + userInput + "'" + " is found.");
                     sw.Stop();
                     Console.WriteLine();
                 } else {
-                    Console.WriteLine(userInput + " is not found");
+                    Console.WriteLine("'" + userInput + "'" + " is not found.");
                     sw.Stop();
                     Console.WriteLine();
                 }
             } else if (sStructure == "Dictionary") {
                 if (myDict.ContainsValue(userInput)) {
-                    Console.WriteLine(userInput + " is found");
+                    Console.WriteLine("'" + userInput + "'" + " is found.");
                     sw.Stop();
                     Console.WriteLine();
                 } else {
-                    Console.WriteLine(userInput + " is not found");
+                    Console.WriteLine("'" + userInput + "'" + " is not found.");
                     sw.Stop();
                     Console.WriteLine();
                 }
@@ -140,11 +168,16 @@ namespace data_structures_group {
         public static void clear_structure(String sStructure) {
             if (sStructure == "Queue") {
                 myQueue.Clear();
+                Console.WriteLine("The Queue has been cleared.");
             } else if (sStructure == "Stack") {
                 myStack.Clear();
+                Console.WriteLine("The Stack has been cleared.");
             } else if (sStructure == "Dictionary") {
                 myDict.Clear();
+                Console.WriteLine("The Dictionary has been cleared.");
             }
+
+            Console.WriteLine();
         }
 
         //This function deletes the user's-entered value from the user-selected data structure
@@ -165,11 +198,13 @@ namespace data_structures_group {
                         if (myQueue.Peek() != deleteQueue)
                         {
                             tempQueue.Enqueue(myQueue.Dequeue());
+                            
                         }
                         else
                         {
                             myQueue.Dequeue();
                             contains = false;
+                            Console.WriteLine("'" + deleteQueue + "'" + " has been deleted from the Queue.");
                         }
                     }
                     //To preserve the original queue's order the remaining values are removed and added to the temp queue
@@ -185,8 +220,7 @@ namespace data_structures_group {
                 }
                 else
                 {
-                    Console.WriteLine("This value is not in the queue");
-                    Console.WriteLine();
+                    Console.WriteLine("'" + deleteQueue + "'" + " is not in the Queue.");
                 }
             }
             else if (sStructure == "Stack")
@@ -204,11 +238,14 @@ namespace data_structures_group {
                         if (myStack.Peek() != deleteStack)
                         {
                             tempStack.Push(myStack.Pop());
+                            
+
                         }
                         else
                         {
                             myStack.Pop();
                             contains = false;
+                            Console.WriteLine("'" + deleteStack + "'" + " has been deleted from the Stack.");
                         }
                     }
                     //The temp stack is then emptied back into the original stack
@@ -219,8 +256,7 @@ namespace data_structures_group {
                 }
                 else
                 {
-                    Console.WriteLine("This value is not in the stack");
-                    Console.WriteLine();
+                    Console.WriteLine("'" + deleteStack + "'" + " is not in the Stack.");
                 }
             }
             else if (sStructure == "Dictionary")
@@ -235,14 +271,16 @@ namespace data_structures_group {
                     foreach (var item in myDict.Where(x => x.Value == deleteDict).ToList())
                     {
                         myDict.Remove(item.Key);
+                        Console.WriteLine("'" + deleteDict + "'" + " has been deleted from the Dictionary.");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("This value is not in the dictionary");
-                    Console.WriteLine();
+                    Console.WriteLine("'" + deleteDict + "'" + " is not in the Dictionary.");
                 }
             }
+
+            Console.WriteLine();
         }
 
         //The Main program starts here
