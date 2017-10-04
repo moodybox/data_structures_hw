@@ -122,54 +122,87 @@ namespace data_structures_group {
             }
         }
 
-        public static void delete_value(String sStructure) {
-            if (sStructure == "Queue") {
+        public static void delete_value(String sStructure)
+        {
+            if (sStructure == "Queue")
+            {
                 Queue<string> tempQueue = new Queue<string>();
                 Console.WriteLine("Enter the string you want to search for");
                 string deleteQueue = Console.ReadLine();
                 bool contains = myQueue.Contains(deleteQueue);
-                if (contains == true) {
-                    while (contains) {
-                        if (myQueue.Peek() != deleteQueue) {
+                if (contains == true)
+                {
+                    while (contains)
+                    {
+                        if (myQueue.Peek() != deleteQueue)
+                        {
                             tempQueue.Enqueue(myQueue.Dequeue());
-                        } else {
+                        }
+                        else
+                        {
                             myQueue.Dequeue();
                             contains = false;
                         }
                     }
-                    while (tempQueue.Count() > 0) {
+                    while (myQueue.Count() > 0)
+                    {
+                        tempQueue.Enqueue(myQueue.Dequeue());
+                    }
+                    while (tempQueue.Count() > 0)
+                    {
                         myQueue.Enqueue(tempQueue.Dequeue());
                     }
                 }
+                else
+                {
+                    Console.WriteLine("This value is not in the queue");
+                }
             }
-            else if (sStructure == "Stack") {
+            else if (sStructure == "Stack")
+            {
                 Stack<string> tempStack = new Stack<string>();
                 Console.WriteLine("Enter the string you want to search for");
                 string deleteStack = Console.ReadLine();
                 bool contains = myStack.Contains(deleteStack);
-                if (contains == true) {
-                    while (contains) {
-                        if (myStack.Peek() != deleteStack) {
+                if (contains == true)
+                {
+                    while (contains)
+                    {
+                        if (myStack.Peek() != deleteStack)
+                        {
                             tempStack.Push(myStack.Pop());
-                        } else {
+                        }
+                        else
+                        {
                             myStack.Pop();
                             contains = false;
                         }
                     }
-                    while (tempStack.Count() > 0) {
+                    while (tempStack.Count() > 0)
+                    {
                         myStack.Push(tempStack.Pop());
                     }
                 }
+                else
+                {
+                    Console.WriteLine("This value is not in the stack");
+                }
             }
-            else if (sStructure == "Dictionary") {
+            else if (sStructure == "Dictionary")
+            {
                 Console.WriteLine("What value do you want to delete?");
                 string deleteDict = Console.ReadLine();
-                if (myDict.ContainsValue(deleteDict)) {
-                    var myKey = myDict.FirstOrDefault(x => x.Value == "deleteDict").Key;
-                    foreach (KeyValuePair<int, string> i in myDict) {
-                        myDict[myKey].Remove(myKey);
+                if (myDict.ContainsValue(deleteDict))
+                {
+                    string myValue = myDict.FirstOrDefault(x => x.Value == "deleteDict").Value;
+                    //The following code will delete all key value pairs whose values match the users inputed value
+                    foreach (var item in myDict.Where(x => x.Value == deleteDict).ToList())
+                    {
+                        myDict.Remove(item.Key);
                     }
-                } else {
+                }
+                else
+                {
                     Console.WriteLine("This value is not in the dictionary");
                 }
             }
