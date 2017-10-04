@@ -122,6 +122,59 @@ namespace Data_Structures_Assignment {
             }
         }
 
+        public static void delete_value(String sStructure) {
+            if (sStructure == "Queue") {
+                Queue<string> tempQueue = new Queue<string>();
+                Console.WriteLine("Enter the string you want to search for");
+                string deleteQueue = Console.ReadLine();
+                bool contains = myQueue.Contains(deleteQueue);
+                if (contains == true) {
+                    while (contains) {
+                        if (myQueue.Peek() != deleteQueue) {
+                            tempQueue.Enqueue(myQueue.Dequeue());
+                        } else {
+                            myQueue.Dequeue();
+                            contains = false;
+                        }
+                    }
+                    while (tempQueue.Count() > 0) {
+                        myQueue.Enqueue(tempQueue.Dequeue());
+                    }
+                }
+            }
+            else if (sStructure == "Stack") {
+                Stack<string> tempStack = new Stack<string>();
+                Console.WriteLine("Enter the string you want to search for");
+                string deleteStack = Console.ReadLine();
+                bool contains = myStack.Contains(deleteStack);
+                if (contains == true) {
+                    while (contains) {
+                        if (myStack.Peek() != deleteStack) {
+                            tempStack.Push(myStack.Pop());
+                        } else {
+                            myStack.Pop();
+                            contains = false;
+                        }
+                    }
+                    while (tempStack.Count() > 0) {
+                        myStack.Push(tempStack.Pop());
+                    }
+                }
+            }
+            else if (sStructure == "Dictionary") {
+                Console.WriteLine("What value do you want to delete?");
+                string deleteDict = Console.ReadLine();
+                if (myDict.ContainsValue(deleteDict)) {
+                    var myKey = myDict.FirstOrDefault(x => x.Value == "deleteDict").Key;
+                    foreach (KeyValuePair<int, string> i in myDict) {
+                        myDict[myKey].Remove(myKey);
+                    }
+                } else {
+                    Console.WriteLine("This value is not in the dictionary");
+                }
+            }
+        }
+
         static void Main(string[] args) {
             //Declare Variables
             String sUserInput;
@@ -207,7 +260,7 @@ namespace Data_Structures_Assignment {
                             display_structure(sStructure);
                             break;
                         case 4:
-
+                            delete_value(sStructure);
                             break;
                         case 5:
                             clear_structure(sStructure);
