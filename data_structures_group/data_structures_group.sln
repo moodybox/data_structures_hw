@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoccerTourneyMoody", "..\So
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Structures Basics", "..\Data Structures Basics\Data Structures Basics\Data Structures Basics.csproj", "{C7796F16-155B-49E6-9DC8-31DCF30F6638}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data_Structures_Assignment", "..\..\Data_Structures_Assignment\Data_Structures_Assignment\Data_Structures_Assignment.csproj", "{35D74011-6135-4931-97F4-DE195ED1FF0D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,11 +29,15 @@ Global
 		{C7796F16-155B-49E6-9DC8-31DCF30F6638}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7796F16-155B-49E6-9DC8-31DCF30F6638}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7796F16-155B-49E6-9DC8-31DCF30F6638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35D74011-6135-4931-97F4-DE195ED1FF0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35D74011-6135-4931-97F4-DE195ED1FF0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35D74011-6135-4931-97F4-DE195ED1FF0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35D74011-6135-4931-97F4-DE195ED1FF0D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {389E5956-2BD3-46AF-84B5-7A6CAE9072D8}
+		SolutionGuid = {22850F68-8239-43EE-80B0-EBE97F708A99}
 	EndGlobalSection
 EndGlobal
