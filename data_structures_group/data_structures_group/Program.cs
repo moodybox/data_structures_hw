@@ -241,8 +241,6 @@ namespace data_structures_group {
 
                     }
 
-                    Console.WriteLine("iMenu: " + iMenu);
-
                     if (iMenu > 4 || iMenu < 1) {
                         iMenu = 0;
                     }
