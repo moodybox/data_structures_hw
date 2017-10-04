@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data_Structures_Assignment {
+namespace data_structures_group {
     class Program {
 
         public static Stack<String> myStack = new Stack<string>();
