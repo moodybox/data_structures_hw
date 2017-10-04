@@ -1,4 +1,16 @@
-﻿using System;
+﻿/*
+    Authors: Peter Garrow, Chelsey Johnson, Mitchell Moody, Christopher Holmstead
+    Date: 10/4/2017
+    Description: 
+        This program allows a user to enter values into 3 different data structures: a Queue, a Stack, and a Dictionary. 
+        The user may add single values or a large amount of auto-generated values.
+        The user may also delete single items or clear out the entire data structure. 
+        The user may also search the data structure for a given value.
+        The user may also display all of the data in a data structure. 
+        The user is able to move from the main menu to the data structure sub-menus and back to the main menu.
+        The user must be in the main menu to exit the program. 
+*/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +19,12 @@ using System.Threading.Tasks;
 namespace data_structures_group {
     class Program {
 
+        //The Program's Data Structures are delcared here
         public static Stack<String> myStack = new Stack<string>();
         public static Queue<String> myQueue = new Queue<string>();
         public static Dictionary<int, String> myDict = new Dictionary<int, string>();
 
+        //This function will add a single user-entered item to the user-selected data structure
         public static void add_one(String sStructure) {
             String userInput = "";
 
@@ -18,6 +32,7 @@ namespace data_structures_group {
             userInput = Console.ReadLine();
             Console.WriteLine();
 
+            //This if statement adds one item to the user-selected data structure
             if (sStructure == "Queue") {
                 myQueue.Enqueue(userInput);
             } else if (sStructure == "Stack") {
@@ -28,10 +43,12 @@ namespace data_structures_group {
             }
         }
 
+        //This function will add a large amount of auto-generated items to the user selected data structure
         public static void add_huge(String sStructure) {
 
             for (int i = 0; i < 2000; i++) {
 
+                //This if statement will add a large amount of items to the user-selected data structure
                 if (sStructure == "Queue") {
                     myQueue.Enqueue("New Entry " + i);
                 } else if (sStructure == "Stack") {
@@ -42,6 +59,7 @@ namespace data_structures_group {
             }
         }
 
+        //This function will display all the items stored within the user-selected data structure
         public static void display_structure(String sStructure) {
 
             if (sStructure == "Queue") {
@@ -60,6 +78,7 @@ namespace data_structures_group {
             Console.WriteLine();
         }
 
+        //This function will search the user-selected data structure for the user-entered item
         public static void search_structure(String sStructure) {
             String userInput = "";
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
@@ -70,14 +89,13 @@ namespace data_structures_group {
 
             sw.Start();
 
-            //Something with the stopwatch
-
+            //This if statement goes to the user-selected data structure and then searches the data structure for the user-selected item
+            //The user is then notified if the searched for value was found or if it was not be found 
             if (sStructure == "Queue") {
                 if (myQueue.Contains(userInput)) {
                     Console.WriteLine(userInput + " is found");
                     sw.Stop();
                     Console.WriteLine();
-                    //Something with the stopwatch
                 } else {
                     Console.WriteLine(userInput + " is not found");
                     sw.Stop();
@@ -88,7 +106,6 @@ namespace data_structures_group {
                     Console.WriteLine(userInput + " is found");
                     sw.Stop();
                     Console.WriteLine();
-                    //Something with the stopwatch
                 } else {
                     Console.WriteLine(userInput + " is not found");
                     sw.Stop();
@@ -99,7 +116,6 @@ namespace data_structures_group {
                     Console.WriteLine(userInput + " is found");
                     sw.Stop();
                     Console.WriteLine();
-                    //Something with the stopwatch
                 } else {
                     Console.WriteLine(userInput + " is not found");
                     sw.Stop();
@@ -115,12 +131,13 @@ namespace data_structures_group {
                 ts.Hours, ts.Minutes, ts.Seconds,
                 ts.Milliseconds / 10);
 
+            // The Time taken to search the data structure for the user-entered value is displayed
             Console.WriteLine("Time elapsed: " + Convert.ToString(ts));
             Console.WriteLine();
         }
 
+        //This function clears out the user-selected data structure of all of its values 
         public static void clear_structure(String sStructure) {
-
             if (sStructure == "Queue") {
                 myQueue.Clear();
             } else if (sStructure == "Stack") {
@@ -130,12 +147,13 @@ namespace data_structures_group {
             }
         }
 
+        //This function deletes the user's-entered value from the user-selected data structure
         public static void delete_value(String sStructure)
         {
             if (sStructure == "Queue")
             {
                 Queue<string> tempQueue = new Queue<string>();
-                Console.Write("Enter the string you want to search for: ");
+                Console.Write("Enter the value you want to delete: ");
                 string deleteQueue = Console.ReadLine();
                 Console.WriteLine();
                 bool contains = myQueue.Contains(deleteQueue);
@@ -143,6 +161,7 @@ namespace data_structures_group {
                 {
                     while (contains)
                     {
+                        //Items in the Queue are removed and added to a temp Queue until the value that the user wants to be deleted is found
                         if (myQueue.Peek() != deleteQueue)
                         {
                             tempQueue.Enqueue(myQueue.Dequeue());
@@ -153,10 +172,12 @@ namespace data_structures_group {
                             contains = false;
                         }
                     }
+                    //To preserve the original queue's order the remaining values are removed and added to the temp queue
                     while (myQueue.Count() > 0)
                     {
                         tempQueue.Enqueue(myQueue.Dequeue());
                     }
+                    //All values in the temp queue are then removed from the temp queue and added back into the original queue
                     while (tempQueue.Count() > 0)
                     {
                         myQueue.Enqueue(tempQueue.Dequeue());
@@ -171,7 +192,7 @@ namespace data_structures_group {
             else if (sStructure == "Stack")
             {
                 Stack<string> tempStack = new Stack<string>();
-                Console.Write("Enter the string you want to search for: ");
+                Console.Write("Enter the value you want to delete: ");
                 string deleteStack = Console.ReadLine();
                 Console.WriteLine();
                 bool contains = myStack.Contains(deleteStack);
@@ -179,6 +200,7 @@ namespace data_structures_group {
                 {
                     while (contains)
                     {
+                        //Values are removed from the original stack and added to a temp stack until the value the user wants to delete is found and removed
                         if (myStack.Peek() != deleteStack)
                         {
                             tempStack.Push(myStack.Pop());
@@ -189,6 +211,7 @@ namespace data_structures_group {
                             contains = false;
                         }
                     }
+                    //The temp stack is then emptied back into the original stack
                     while (tempStack.Count() > 0)
                     {
                         myStack.Push(tempStack.Pop());
@@ -202,13 +225,13 @@ namespace data_structures_group {
             }
             else if (sStructure == "Dictionary")
             {
-                Console.WriteLine("What value do you want to delete?");
+                Console.Write("Enter the value you want to delete: ");
                 string deleteDict = Console.ReadLine();
                 Console.WriteLine();
                 if (myDict.ContainsValue(deleteDict))
                 {
                     string myValue = myDict.FirstOrDefault(x => x.Value == "deleteDict").Value;
-                    //The following code will delete all key value pairs whose values match the users inputed value
+                    //The following code will find and delete all key value pairs whose values match the users inputed value
                     foreach (var item in myDict.Where(x => x.Value == deleteDict).ToList())
                     {
                         myDict.Remove(item.Key);
@@ -222,15 +245,17 @@ namespace data_structures_group {
             }
         }
 
+        //The Main program starts here
         static void Main(string[] args) {
-            //Declare Variables
+            //Variables
             String sUserInput;
-            int iMenu = 0;
-            int iSelection = 0;
-            Boolean bMenu = true;
-            Boolean bSubMenu = true;
-            String sStructure = "";
+            int iMenu = 0; //Used to select the user-desired main menu item
+            int iSelection = 0; //Used to select the user-desired sub-menu item
+            Boolean bMenu = true; //Controls the main menu loop
+            Boolean bSubMenu = true; //Controls the sub-menu loop
+            String sStructure = ""; //Stores the type of the data structure the user wants to work with
 
+            //Starts the main menu program loop
             while (bMenu) {
                 //Main menu output and loop.
                 while (iMenu == 0) {
@@ -275,7 +300,7 @@ namespace data_structures_group {
                         bSubMenu = false;
                         break;
                 }
-                //Sub menu output
+                //This is the start of the sub-menu - the sub menu is written only once but it changes to show the user-selected data structure through using the sStructure variable
                 while (bSubMenu) {
                     Console.WriteLine("1. Add one time to " + sStructure);
                     Console.WriteLine("2. Add Huge List of Items to " + sStructure);
@@ -290,7 +315,7 @@ namespace data_structures_group {
                     sUserInput = Console.ReadLine();
                     Console.WriteLine();
 
-                    //Another try catch to ensure a number is added
+                    //A Try catch to ensure a number is added
                     try {
                         iSelection = Convert.ToInt32(sUserInput);
                     } catch {
@@ -298,7 +323,7 @@ namespace data_structures_group {
                         Console.WriteLine();
                     }
 
-                    //Switch statement which calls the correct function based on the chosen data structure
+                    //Switch statement that calls the user-selected function and passes the user-chosen data structure
                     switch (iSelection) {
                         case 1:
                             add_one(sStructure);
