@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace data_structures_group {
+namespace Data_Structures_Assignment {
     class Program {
+
         public static Stack<String> myStack = new Stack<string>();
         public static Queue<String> myQueue = new Queue<string>();
         public static Dictionary<int, String> myDict = new Dictionary<int, string>();
@@ -121,166 +122,107 @@ namespace data_structures_group {
             }
         }
 
-        public static int mainMenu() {
-            int choice = 0;
-            bool isInt = false;
-
-            Console.WriteLine("1. Stack");
-            Console.WriteLine("2. Queue");
-            Console.WriteLine("3. Dictionary");
-            Console.WriteLine("4. Exit");
-            Console.Write("Enter a number 1-4: ");
-
-            while (!isInt) {
-                try {
-                    choice = Convert.ToInt32(Console.ReadLine());
-                    isInt = true;
-                }
-                catch {
-                    Console.Write("\nYou must enter an integer to continue: ");
-                    isInt = false;
-                }
-            }
-            Console.WriteLine();
-            return choice;
-        }
-        public static int stackMenu() {
-            int choice = 0;
-            bool isInt = false;
-
-            Console.WriteLine("1. Add one time to Stack");
-            Console.WriteLine("2. Add Huge List of Items to Stack");
-            Console.WriteLine("3. Display Stack");
-            Console.WriteLine("4. Delete from Stack");
-            Console.WriteLine("5. Clear Stack");
-            Console.WriteLine("6. Search Stack");
-            Console.WriteLine("7. Return to Main Menu");
-            Console.Write("Enter a number 1-7: ");
-
-            while (!isInt) {
-                try {
-                    choice = Convert.ToInt32(Console.ReadLine());
-                    isInt = true;
-                }
-                catch {
-                    Console.Write("\nYou must enter an integer to continue: ");
-                    isInt = false;
-                }
-            }
-            Console.WriteLine();
-            return choice;
-        }
-        public static int queueMenu() {
-            int choice = 0;
-            bool isInt = false;
-
-            Console.WriteLine("1. Add one time to Queue");
-            Console.WriteLine("2. Add Huge List of Items to Queue");
-            Console.WriteLine("3. Display Queue");
-            Console.WriteLine("4. Delete from Queue");
-            Console.WriteLine("5. Clear Queue");
-            Console.WriteLine("6. Search Queue");
-            Console.WriteLine("7. Return to Main Menu");
-            Console.Write("Enter a number 1-7: ");
-
-            while (!isInt) {
-                try {
-                    choice = Convert.ToInt32(Console.ReadLine());
-                    isInt = true;
-                }
-                catch {
-                    Console.Write("\nYou must enter an integer to continue: ");
-                    isInt = false;
-                }
-            }
-            Console.WriteLine();
-            return choice;
-        }
-        public static int dictMenu() {
-            int choice = 0;
-            bool isInt = false;
-
-            Console.WriteLine("1. Add one item to Dictionary");
-            Console.WriteLine("2. Add Huge List of Items to Dictionary");
-            Console.WriteLine("3. Display Dictionary");
-            Console.WriteLine("4. Delete from Dictionary");
-            Console.WriteLine("5. Clear Dictionary");
-            Console.WriteLine("6. Search Dictionary");
-            Console.WriteLine("7. Return to Main Menu");
-            Console.Write("Enter a number 1-4: ");
-
-            while (!isInt) {
-                try {
-                    choice = Convert.ToInt32(Console.ReadLine());
-                    isInt = true;
-                }
-                catch {
-                    Console.Write("\nYou must enter an integer to continue: ");
-                    isInt = false;
-                }
-            }
-            Console.WriteLine();
-            return choice;
-        }
-
         static void Main(string[] args) {
-            bool exit = false;
-            int mainChoice = 0;
-            int stackChoice = 0;
-            int queueChoice = 0;
-            int dictChoice = 0;
-            int subChoice = 0;
+            //Declare Variables
+            String sUserInput;
+            int iMenu = 0;
+            int iSelection = 0;
+            Boolean bMenu = true;
+            Boolean bSubMenu = true;
             String sStructure = "";
+            //Stack<String> myStack;
+            //Queue<String> myQueue;
+            //Dictionary<int, String> myDict;
 
+            while (bMenu) {
 
+                while (iMenu == 0) {
+                    Console.WriteLine("1. Stack");
+                    Console.WriteLine("2. Queue");
+                    Console.WriteLine("3. Dictionary");
+                    Console.WriteLine("4. Exit");
 
-            while (!exit) {
-                mainChoice = mainMenu();
-                switch(mainChoice) {
+                    Console.Write("Select one of the above: ");
+
+                    sUserInput = Console.ReadLine();
+
+                    try {
+                        iMenu = Convert.ToInt32(sUserInput);
+                        bSubMenu = true;
+                    } catch {
+                        Console.WriteLine("Invalid input. Enter an integer from the menu.");
+                        iMenu = 0;
+
+                    }
+
+                    Console.WriteLine("iMenu: " + iMenu);
+
+                    if (iMenu > 4 || iMenu < 1) {
+                        iMenu = 0;
+                    }
+                }
+
+                switch (iMenu) {
                     case 1:
-                        subChoice = stackMenu();
                         sStructure = "Stack";
                         break;
                     case 2:
-                        subChoice = queueMenu();
                         sStructure = "Queue";
                         break;
                     case 3:
-                        subChoice = dictMenu();
                         sStructure = "Dictionary";
                         break;
                     case 4:
-                        exit = true;
-                        break;
-                    default:
-                        exit = false;
+                        sStructure = "none";
+                        bMenu = false;
                         break;
                 }
 
-                switch (subChoice) {
-                    case 1:
-                        add_one(sStructure);
-                        break;
-                    case 2:
-                        add_huge(sStructure);
-                        break;
-                    case 3:
-                        display_structure(sStructure);
-                        break;
-                    case 4:
+                while (bSubMenu) {
+                    Console.WriteLine("1. Add one time to " + sStructure);
+                    Console.WriteLine("2. Add Huge List of Items to " + sStructure);
+                    Console.WriteLine("3. Display " + sStructure);
+                    Console.WriteLine("4. Delete from " + sStructure);
+                    Console.WriteLine("5. Clear " + sStructure);
+                    Console.WriteLine("6. Search " + sStructure);
+                    Console.WriteLine("7. Return to Main Menu");
+                    Console.Write("Select one of the above: ");
 
-                        break;
-                    case 5:
-                        clear_structure(sStructure);
-                        break;
-                    case 6:
-                        search_structure(sStructure);
-                        break;
-                    case 7:
-                        break;
+                    sUserInput = Console.ReadLine();
+
+                    try {
+                        iSelection = Convert.ToInt32(sUserInput);
+                    } catch {
+                        Console.WriteLine("Invalid input. Input a valid integer selction from the menu.\n");
+                    }
+
+                    switch (iSelection) {
+                        case 1:
+                            add_one(sStructure);
+                            break;
+                        case 2:
+                            add_huge(sStructure);
+                            break;
+                        case 3:
+                            display_structure(sStructure);
+                            break;
+                        case 4:
+
+                            break;
+                        case 5:
+                            clear_structure(sStructure);
+                            break;
+                        case 6:
+                            search_structure(sStructure);
+                            break;
+                        case 7:
+                            bSubMenu = false;
+                            iMenu = 0;
+                            break;
+                    }
+
                 }
             }
-
         }
     }
 }
