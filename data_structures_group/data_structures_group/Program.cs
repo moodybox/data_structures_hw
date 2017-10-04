@@ -14,8 +14,9 @@ namespace data_structures_group {
         public static void add_one(String sStructure) {
             String userInput = "";
 
-            Console.WriteLine("Enter a string to insert into the " + sStructure + ": ");
+            Console.Write("Enter a string to insert into the " + sStructure + ": ");
             userInput = Console.ReadLine();
+            Console.WriteLine();
 
             if (sStructure == "Queue") {
                 myQueue.Enqueue(userInput);
@@ -56,14 +57,16 @@ namespace data_structures_group {
                     Console.WriteLine(entry.Value);
                 }
             }
+            Console.WriteLine();
         }
 
         public static void search_structure(String sStructure) {
             String userInput = "";
             System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
 
-            Console.Write("Enter the value you are searching for: ");
+            Console.Write("Enter the value you want to search for: ");
             userInput = Console.ReadLine();
+            Console.WriteLine();
 
             sw.Start();
 
@@ -73,35 +76,39 @@ namespace data_structures_group {
                 if (myQueue.Contains(userInput)) {
                     Console.WriteLine(userInput + " is found");
                     sw.Stop();
+                    Console.WriteLine();
                     //Something with the stopwatch
                 } else {
                     Console.WriteLine(userInput + " is not found");
                     sw.Stop();
+                    Console.WriteLine();
                 }
             } else if (sStructure == "Stack") {
                 if (myStack.Contains(userInput)) {
                     Console.WriteLine(userInput + " is found");
                     sw.Stop();
+                    Console.WriteLine();
                     //Something with the stopwatch
                 } else {
                     Console.WriteLine(userInput + " is not found");
                     sw.Stop();
+                    Console.WriteLine();
                 }
             } else if (sStructure == "Dictionary") {
                 if (myDict.ContainsValue(userInput)) {
                     Console.WriteLine(userInput + " is found");
                     sw.Stop();
+                    Console.WriteLine();
                     //Something with the stopwatch
                 } else {
                     Console.WriteLine(userInput + " is not found");
                     sw.Stop();
+                    Console.WriteLine();
                 }
             }
 
             // Get the elapsed time as a TimeSpan value.
             TimeSpan ts = sw.Elapsed;
-
-            Console.WriteLine("ts: " + ts);
 
             // Format and display the TimeSpan value.
             string elapsedTime = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
@@ -109,6 +116,7 @@ namespace data_structures_group {
                 ts.Milliseconds / 10);
 
             Console.WriteLine("Time elapsed: " + Convert.ToString(ts));
+            Console.WriteLine();
         }
 
         public static void clear_structure(String sStructure) {
@@ -127,8 +135,9 @@ namespace data_structures_group {
             if (sStructure == "Queue")
             {
                 Queue<string> tempQueue = new Queue<string>();
-                Console.WriteLine("Enter the string you want to search for");
+                Console.Write("Enter the string you want to search for: ");
                 string deleteQueue = Console.ReadLine();
+                Console.WriteLine();
                 bool contains = myQueue.Contains(deleteQueue);
                 if (contains == true)
                 {
@@ -156,13 +165,15 @@ namespace data_structures_group {
                 else
                 {
                     Console.WriteLine("This value is not in the queue");
+                    Console.WriteLine();
                 }
             }
             else if (sStructure == "Stack")
             {
                 Stack<string> tempStack = new Stack<string>();
-                Console.WriteLine("Enter the string you want to search for");
+                Console.Write("Enter the string you want to search for: ");
                 string deleteStack = Console.ReadLine();
+                Console.WriteLine();
                 bool contains = myStack.Contains(deleteStack);
                 if (contains == true)
                 {
@@ -186,12 +197,14 @@ namespace data_structures_group {
                 else
                 {
                     Console.WriteLine("This value is not in the stack");
+                    Console.WriteLine();
                 }
             }
             else if (sStructure == "Dictionary")
             {
                 Console.WriteLine("What value do you want to delete?");
                 string deleteDict = Console.ReadLine();
+                Console.WriteLine();
                 if (myDict.ContainsValue(deleteDict))
                 {
                     string myValue = myDict.FirstOrDefault(x => x.Value == "deleteDict").Value;
@@ -204,6 +217,7 @@ namespace data_structures_group {
                 else
                 {
                     Console.WriteLine("This value is not in the dictionary");
+                    Console.WriteLine();
                 }
             }
         }
@@ -216,36 +230,35 @@ namespace data_structures_group {
             Boolean bMenu = true;
             Boolean bSubMenu = true;
             String sStructure = "";
-            //Stack<String> myStack;
-            //Queue<String> myQueue;
-            //Dictionary<int, String> myDict;
 
             while (bMenu) {
-
+                //Main menu output and loop.
                 while (iMenu == 0) {
                     Console.WriteLine("1. Stack");
                     Console.WriteLine("2. Queue");
                     Console.WriteLine("3. Dictionary");
                     Console.WriteLine("4. Exit");
+                    Console.WriteLine();
 
                     Console.Write("Select one of the above: ");
 
                     sUserInput = Console.ReadLine();
-
+                    Console.WriteLine();
+                    
+                    //Try catch for strings and numbers that are not 1-4.
                     try {
                         iMenu = Convert.ToInt32(sUserInput);
                         bSubMenu = true;
                     } catch {
                         Console.WriteLine("Invalid input. Enter an integer from the menu.");
+                        Console.WriteLine();
                         iMenu = 0;
-
                     }
-
                     if (iMenu > 4 || iMenu < 1) {
                         iMenu = 0;
                     }
                 }
-
+                //This selects the data structure to be used, which will format the menus later
                 switch (iMenu) {
                     case 1:
                         sStructure = "Stack";
@@ -262,7 +275,7 @@ namespace data_structures_group {
                         bSubMenu = false;
                         break;
                 }
-
+                //Sub menu output
                 while (bSubMenu) {
                     Console.WriteLine("1. Add one time to " + sStructure);
                     Console.WriteLine("2. Add Huge List of Items to " + sStructure);
@@ -271,16 +284,21 @@ namespace data_structures_group {
                     Console.WriteLine("5. Clear " + sStructure);
                     Console.WriteLine("6. Search " + sStructure);
                     Console.WriteLine("7. Return to Main Menu");
+                    Console.WriteLine();
                     Console.Write("Select one of the above: ");
 
                     sUserInput = Console.ReadLine();
+                    Console.WriteLine();
 
+                    //Another try catch to ensure a number is added
                     try {
                         iSelection = Convert.ToInt32(sUserInput);
                     } catch {
                         Console.WriteLine("Invalid input. Input a valid integer selction from the menu.\n");
+                        Console.WriteLine();
                     }
 
+                    //Switch statement which calls the correct function based on the chosen data structure
                     switch (iSelection) {
                         case 1:
                             add_one(sStructure);
