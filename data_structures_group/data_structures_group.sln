@@ -5,12 +5,7 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data_structures_group", "data_structures_group\data_structures_group.csproj", "{1140D2CB-2FC6-4D8E-95FB-872B04323393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoccerTourneyMoody", "..\SoccerTourneyMoody\SoccerTourneyMoody\SoccerTourneyMoody.csproj", "{BD69DCE9-FD79-4C7D-936A-1BB29369FF3A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Structures Basics", "..\Data Structures Basics\Data Structures Basics\Data Structures Basics.csproj", "{C7796F16-155B-49E6-9DC8-31DCF30F6638}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data_Structures_Assignment", "..\..\Data_Structures_Assignment\Data_Structures_Assignment\Data_Structures_Assignment.csproj", "{35D74011-6135-4931-97F4-DE195ED1FF0D}"
-EndProject
+
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
